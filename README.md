@@ -1,8 +1,6 @@
 # Maybe
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/maybe`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Prefer duck typing to typecasing. Inspired and based on [this article](http://www.virtuouscode.com/2011/05/30/null-objects-and-falsiness/) by Avdi Grimm.
 
 ## Installation
 
@@ -22,7 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Wrap any object that may be nil to continue duck typing
+
+```ruby
+def snakecase klass
+  Maybe(klass).to_s.
+  gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+  gsub(/([a-z\d])([A-Z])/,'\1_\2').
+  tr("-", "_").
+  downcase
+end
+
+snakecase klass
+#=> "party_time"
+
+snakecase klass
+#=> ""
+```
 
 ## Development
 
@@ -32,10 +46,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/maybe. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rasphilco/maybe. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
