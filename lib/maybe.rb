@@ -6,6 +6,8 @@ module Maybe
       self
     end
 
+    def nil?; true; end
+
     # conversions
     def to_a; []; end
     def to_s; ""; end

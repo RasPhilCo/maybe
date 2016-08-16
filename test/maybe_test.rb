@@ -13,6 +13,10 @@ class MaybeTest < Minitest::Test
     assert @maybe, @maybe.undefined_method
   end
 
+  def test_is_nil
+    assert true, @maybe.nil?
+  end
+
   def test_conversions
     assert [], @maybe.to_a
     assert "", @maybe.to_s
